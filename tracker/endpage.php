@@ -14,14 +14,10 @@ if(isset($_POST['send'])){
     $str_arr100=explode(",",$tempmade);
     $sql11="SELECT * FROM `hc_templates`";
     $result11=mysqli_query($connectDB,$sql11);
-    $i=0;
     while($row11=mysqli_fetch_assoc($result11)){
         
-        if(str_contains($row10['tempmade'], $tempmade)){
-             echo $i; 
-             $i++;
-        }else{
-            $time = 200;
+        if(str_contains($tempmade, $row11['template'] )){
+             echo $row11['time_req_veena']; 
         }
     }
     
@@ -46,7 +42,7 @@ while($row=mysqli_fetch_assoc($resultven)){
     $sqlv= " UPDATE `veena_team` SET `task` = '$campaign_name',`time`='$time' WHERE name='$free' LIMIT 1 ";
     $resultv=mysqli_query($connectDB,$sqlv);
     if($resultv){
-        echo $time;
+        echo $i;
     }
     else{
         echo "Failed: ".mysqli_error($connectDB);
