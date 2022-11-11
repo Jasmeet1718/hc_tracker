@@ -17,7 +17,7 @@ if(isset($_POST['send'])){
     while($row11=mysqli_fetch_assoc($result11)){
         
         if(str_contains($tempmade, $row11['template'] )){
-             echo $row11['time_req_veena']; 
+             $time_req_veena= $row11['time_req_veena']; 
         }
     }
     
@@ -39,7 +39,7 @@ while($row=mysqli_fetch_assoc($resultven)){
         }
     }
 }; 
-    $sqlv= " UPDATE `veena_team` SET `task` = '$campaign_name',`time`='$time' WHERE name='$free' LIMIT 1 ";
+    $sqlv= " UPDATE `veena_team` SET `task` = '$campaign_name',`time`='$time_req_veena' WHERE name='$free' LIMIT 1 ";
     $resultv=mysqli_query($connectDB,$sqlv);
     if($resultv){
         echo $i;
