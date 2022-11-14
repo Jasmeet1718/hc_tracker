@@ -1,8 +1,8 @@
 <?php
 
 include "conn.php";
-error_reporting(E_ERROR | E_PARSE);
-date_default_timezone_set('Asia/Kolkata');
+error_reporting(E_ERROR | E_PARSE); //warning hat jaati hai 
+date_default_timezone_set('Asia/Kolkata'); // india time setting 
 $time = date('Y-m-d H:i:s');
 if(isset($_POST['submit'])){
     $campaign_name=$_POST['campaign_name'];
@@ -27,6 +27,7 @@ if(isset($_POST['submit'])){
         if($result){
             $last_id = mysqli_insert_id($connectDB);
              header("location: select.php?id=$last_id");
+            
         }
     }
 }
@@ -63,10 +64,12 @@ if(isset($_POST['submit'])){
         <label for="start_date">Enter Campaign start date: </label> <input name="start_date" type="datetime-local"><br><br>
         <label for="client_vertical">Enter Client Vertical: </label> <input name="client_vertical" type="text"><br><br>
         <label for="templates">Select templates: </label>
-        <?php $sqlc="SELECT DISTINCT `type` FROM hc_templates";
+        <?php 
+        $sqlc="SELECT DISTINCT `type` FROM hc_templates";
         $resultc=mysqli_query($connectDB,$sqlc); 
         ?> <select name="templates[]" id="templates_drop" multiple="multiple"> <?php
-        while($row=mysqli_fetch_assoc($resultc)){
+        
+        while($row=mysqli_fetch_assoc($resultc)){ 
             ?>
                 <option value="<?php echo $row['type'] ?>"><?php echo $row['type'] ?></option><?php
         }
