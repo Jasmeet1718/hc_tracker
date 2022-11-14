@@ -1,6 +1,17 @@
 <?php
 
 include "conn.php";
+
+session_start();
+
+$_SESSION["username"];
+$_SESSION["team"];
+$_SESSION["role"];
+
+if(!$_SESSION["username"]){
+  header("location: login.php");
+}
+
 error_reporting(E_ERROR | E_PARSE); //warning hat jaati hai 
 date_default_timezone_set('Asia/Kolkata'); // india time setting 
 $time = date('Y-m-d H:i:s');
@@ -46,16 +57,17 @@ if(isset($_POST['submit'])){
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
   <link rel="stylesheet" href="style.css">
-
-  <title>Tracker</title>
-</head>
-<body>
     <style>
         .dropdown-menu{ max-height:250px; overflow:auto;margin-bottom:30px; }
         form{
             margin-left:50px;
         }
     </style>
+  <title>Tracker</title>
+</head>
+<body>
+    <?php if($_SESSION["role"] == '1') { ?>
+        <button><a href="logout.php">logout</a></button>
     <h1 class="heading">HC Tracker</h1>
     <form action="" method="post">
         <label for="campaign_name">Enter Campaign name: </label> <input name="campaign_name" type="text"><br><br>
@@ -81,7 +93,7 @@ if(isset($_POST['submit'])){
 </div>
         
     </form>
-
+<?php } else { header("location: veena.php"); } ?>
     <script>
 let $select = $('#templates_drop').multiselect({
   //includeSelectAllOption: false,

@@ -45,9 +45,9 @@ if(isset($_POST['submit'])){
         <form action="" method="post">
         <?php 
         while ($row1 = mysqli_fetch_array($result1)){
-            if (str_contains($row['templates'], $row1['type'])){
+            if (strpos($row['templates'], $row1['type']  !== false)){
                 if ($row1['time_req']<=$row['time_left']) { 
-                    if (str_contains($row['tempmade'], $row1['template'])){
+                    if (strpos($row['tempmade'], $row1['template'] !== false)){
                         ?><input checked type="checkbox" name="tempmade[]" value=" <?php echo $row1['template']; ?> "> <?php echo $row1['template']; ?> <br>
                     <?php }
                     else{

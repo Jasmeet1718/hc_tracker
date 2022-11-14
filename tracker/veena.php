@@ -1,5 +1,10 @@
 <?php
 include "conn.php";
+session_start();
+
+if(!$_SESSION["username"]){
+  header("location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +23,11 @@ include "conn.php";
   width:auto;
 }
 th,td{
-    
+   
     padding:10px;
 }
     </style>
+    <button><a href="logout.php">logout</a></button>
 <h1 class="heading">HC tracker - Veena</h1>
 <table>
     <tr>
@@ -39,18 +45,19 @@ while($row=mysqli_fetch_assoc($result)){
     $result1=mysqli_query($connectDB,$sql1);
     while($row1=mysqli_fetch_assoc($result1)){
       if($row1['campaign_name']==$task){
+        if($_SESSION["username"] == $row['mail_id']){
          ?><tr>
         <td><?php echo $row['name']; ?> </td>
     <td><?php echo $row['task']; ?> </td>
-    <td><p id="demo<?php echo $i ?>"> </p><button id="stop<?php echo $i ?>">stop</button></td> 
-    </tr> 
+    <td><p id="demo<?php echo $i ?>"> </p><button id="stop<?php echo $i ?>">stop</button></td>
+    </tr>
     <script>
 var countDownDate<?php echo $i?> = new Date("<?php echo $row1['create_time'];?>").getTime();
 var newtime<?php echo $i?>=countDownDate<?php echo $i?>+(<?php echo $row['time'];?>*1000);
 var x<?php echo $i?> = setInterval(function() {
   var now = new Date().getTime();
   var distance<?php echo $i?> = newtime<?php echo $i?> - now  ;
-  
+ 
   if (distance<?php echo $i?> <= 0) {
     distance<?php echo $i?>*=-1;
     if (distance<?php echo $i?> === 0){
@@ -59,14 +66,14 @@ var x<?php echo $i?> = setInterval(function() {
 };
   document.getElementById("demo<?php echo $i ?>").innerHTML = new Date(distance<?php echo $i?>).toISOString().slice(11, 19);
 }, 1000);
-  
-  
+ 
+ 
   document.getElementById("stop<?php echo $i ?>").addEventListener("click",() => {
     clearInterval(x<?php echo $i?>);
     x<?php echo $i?> = 0;
   })
 </script> <?php
-      }
+      }}
     }
      $i++;
 }
