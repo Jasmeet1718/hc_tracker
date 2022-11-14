@@ -77,7 +77,7 @@ if(isset($_POST['submit'])){
         ?> <select name="templates[]" id="templates_drop" multiple="multiple"> <?php
         while($row=mysqli_fetch_assoc($resultc))
         {
-            if (strpos($templates,  $row['type'] !== false )) { 
+            if (strpos($templates,  $row['type'] )!== false) { 
                 ?><option selected value="<?php echo $row['type'] ?>"><?php echo $row['type'] ?></option><?php
             }else{
                 ?> <option value="<?php echo $row['type'] ?>"><?php echo $row['type'] ?></option> <?php

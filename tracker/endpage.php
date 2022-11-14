@@ -16,7 +16,7 @@ if(isset($_POST['send'])){
     $result11=mysqli_query($connectDB,$sql11);
     while($row11=mysqli_fetch_assoc($result11)){
         
-        if(strpos($tempmade, $row11['template'] !== false )){
+        if(strpos($tempmade, $row11['template']  )!== false){
              $time_req_veena= $row11['time_req_veena']; 
         }
     }
