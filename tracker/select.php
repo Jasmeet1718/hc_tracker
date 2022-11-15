@@ -1,5 +1,10 @@
 <?php
 include "conn.php";
+session_start();
+if(!$_SESSION["username"]){
+  header("location: login.php");
+}
+
 $id=$_GET['id'];
 if(isset($_POST['id'])) {
     $id=$_GET['id'];
@@ -45,9 +50,9 @@ if(isset($_POST['submit'])){
         <form action="" method="post">
         <?php 
         while ($row1 = mysqli_fetch_array($result1)){
-            if (strpos($row['templates'], $row1['type'] )!== false){
+            if (strpos($row['templates'], $row1['type']) !== false ){
                 if ($row1['time_req']<=$row['time_left']) { 
-                    if (strpos($row['tempmade'], $row1['template'] )!== false){
+                    if (strpos($row['tempmade'], $row1['template'] !== false)){
                         ?><input checked type="checkbox" name="tempmade[]" value=" <?php echo $row1['template']; ?> "> <?php echo $row1['template']; ?> <br>
                     <?php }
                     else{

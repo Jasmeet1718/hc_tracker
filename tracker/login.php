@@ -3,8 +3,8 @@
 include_once 'conn.php';
 session_start();
 
-if(isset($_SESSION["username"])){
-  header("location: index.php");
+if(isset($_SESSION["username"]) && $_SESSION['role'] === '2'){
+  header("location: veena.php");
 }
 
 
@@ -22,8 +22,12 @@ $password = $_POST["password"];
               $_SESSION["role"] = $row['role'];
 
               
-              if($row['role'] === '1'){
+              if($row['role'] === '0'){
                 header("location: index.php");
+              }else if($row['role'] === '2') {
+                header("location: veena.php");
+              }else if($row['role'] === '9' ) {
+                header("location: admin.php");
               }
               
             //   else{
@@ -84,16 +88,3 @@ $password = $_POST["password"];
     </div>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-

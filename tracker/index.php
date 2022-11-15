@@ -66,8 +66,11 @@ if(isset($_POST['submit'])){
   <title>Tracker</title>
 </head>
 <body>
-    <?php if($_SESSION["role"] == '1') { ?>
+    <?php if($_SESSION["role"] == '0' || $_SESSION["role"] == '9') { ?>
         <button><a href="logout.php">logout</a></button>
+        <?php if($_SESSION["role"] == '9') { ?>
+    <a class="btn btn-primary" href="./admin.php">Back</a>
+    <?php } ?>
     <h1 class="heading">HC Tracker</h1>
     <form action="" method="post">
         <label for="campaign_name">Enter Campaign name: </label> <input name="campaign_name" type="text"><br><br>
@@ -89,11 +92,10 @@ if(isset($_POST['submit'])){
 </select>
 <div style="margin-left:300px;">
 <button class="btn btn-success" type="submit" name="submit">Submit</button>
-        <a class="btn btn-danger" href="./tracker_update">Add/edit templates </a>
 </div>
         
     </form>
-<?php } else { header("location: veena.php"); } ?>
+<?php } ?>
     <script>
 let $select = $('#templates_drop').multiselect({
   //includeSelectAllOption: false,

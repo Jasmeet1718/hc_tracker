@@ -1,3 +1,14 @@
+<?php
+include "conn.php";
+
+session_start();
+
+if(!$_SESSION["username"] || $_SESSION["role"] !== '9'){
+  header("location: login.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +25,7 @@
     <title>Admin</title>
 </head>
 <body>
+    <button><a href="logout.php">logout</a></button>
 <h1 class="heading">HC tracker - Admin page</h1>
     <div class="box">
         <div class="admin-box">
