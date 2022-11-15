@@ -3,3 +3,19 @@
     color:#2096f3;
     text-align: center;
 }
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.admin-box{
+    box-shadow: 1px 1px 10px black;
+    width:500px;
+    text-align: center;
+    padding-top:20px;
+    margin-top: 50px;
+}
+.ad-btn{
+    margin-bottom:20px;
+    width:150px;
+}
