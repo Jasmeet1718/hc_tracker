@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 11:08 AM
+-- Generation Time: Nov 16, 2022 at 12:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -46,7 +46,10 @@ INSERT INTO `assign_task` (`id`, `task_name`, `temp_tbd`, `assign_to`, `time_v`,
 (70, 'new test', 'Mutual Funds', 'Veena', 10800, 0, 1),
 (71, 'title-2', 'Dropdown', 'Veena', 8100, 0, 0),
 (72, 'title-2', '360 Degree carousel', 'Veena', 10800, 0, 0),
-(73, 'title-5', 'Vertical Slider', 'Veena', 5400, 0, 0);
+(73, 'title-5', 'Vertical Slider', 'Veena', 5400, 0, 0),
+(74, 'mahesh chicha', 'Swiper without feed', 'Veena', 5400, 0, 0),
+(75, 'mahesh chicha', '360 Degree carousel', 'Veena', 10800, 0, 0),
+(76, 'mahesh chicha', 'Video Moment Marketing', 'Veena', 9000, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -162,7 +165,8 @@ INSERT INTO `tracker_data` (`id`, `campaign_name`, `client_name`, `agency_name`,
 (147, 'APV - Maja Ma-DBM Pinkvilla', 'Amazon Prime Video', '', '2022-11-16 13:19:36', '2022-11-19 16:19:00', '', 'swiper,carousel,richMedia,', 269964, ' Swiper without feed , Rich Media , Carousel flip ,'),
 (148, 'title-5', '', '', '2022-11-16 13:39:52', '2022-11-25 13:39:00', '', 'carousel,richMedia,', 777548, 'Vertical Slider,'),
 (149, 'new test', 'mpl', '', '2022-11-16 14:19:29', '2022-11-26 14:19:00', '', 'richMedia,search,interactive,', 863971, 'Rich Media,Mutual Funds,'),
-(150, 'title-2', 'tanishq', '', '2022-11-16 15:08:29', '2022-11-26 15:08:00', '', 'swiper,carousel,richMedia,interactive,other,', 863971, 'Dropdown,360 Degree carousel,');
+(150, 'title-2', 'tanishq', '', '2022-11-16 15:08:29', '2022-11-26 15:08:00', '', 'swiper,carousel,richMedia,interactive,other,', 863971, 'Dropdown,360 Degree carousel,'),
+(151, 'mahesh chicha', 'dunzo', 'DBM', '2022-11-16 15:43:09', '2022-11-30 15:42:00', '', 'swiper,carousel,richMedia,timer,video,flip,animation,', 1209531, 'Swiper without feed,360 Degree carousel,Video Moment Marketing,');
 
 -- --------------------------------------------------------
 
@@ -172,6 +176,7 @@ INSERT INTO `tracker_data` (`id`, `campaign_name`, `client_name`, `agency_name`,
 
 CREATE TABLE `user` (
   `id` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(15) NOT NULL,
   `team` varchar(15) NOT NULL,
@@ -182,34 +187,35 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `team`, `role`) VALUES
-(1, 'mohamed.s@hockeycurve.com', 'garud', 'Garud', 3),
-(2, 'sapna.g@hockeycurve.com', 'nischay', 'Nischay', 5),
-(3, 'vishwadeep.sonawale@hockeycurve.com', 'gati', 'Gati', 0),
-(6, 'jasmeet.singh@hockeycurve.com', 'garud', 'Garud', 3),
-(7, 'mahesh.b@hockeycurve.com', 'nischay', 'Nischay', 5),
-(9, 'pavan.vichare@hockeycurve.com', 'garud', 'Garud', 3),
-(10, 'pooja@hockeycurve.com', 'nischay', 'Nischay', 5),
-(11, 'adithi@hockeycurve.com', 'nischay', 'Nischay', 6),
-(13, 'prathamesh.bhagwat@hockeycurve.com', 'garud', 'Garud', 3),
-(14, 'nikhil.g@hockeycurve.com', 'garud', 'Garud', 4),
-(15, 'nikita.d@hockeycurve.com', 'veena', 'Veena', 1),
-(16, 'siddhi.phalke@hockeycurve.com', 'veena', 'Veena', 2),
-(17, 'raj.p@hockeycurve.com', 'gati', 'Gati', 0),
-(18, 'hariharanv@hockeycurve.com', 'veena', 'Veena', 1),
-(19, 'tejshwini@hockeycurve.com', 'veena', 'Veena', 1),
-(20, 'apowar@hockeycurve.com', 'veena', 'Veena', 1),
-(21, 'ninad.ganu@hockeycurve.com', 'veena', 'Veena', 1),
-(22, 'bavika@hockeycurve.com', 'veena', 'Veena', 1),
-(23, 'dinesh@hockeycurve.com', 'admin', 'Lakshya', 9),
-(24, 'priya.rajput@hockeycurve.com', 'admin', 'Lakshya', 9),
-(25, 'naved.chowdhary@hockeycurve.com', 'lakshya', 'Lakshya', 7),
-(26, 'manish.madhavi@hockeycurve.com', 'lakshya', 'Lakshya', 7),
-(29, 'shivam.singh@hockeycurve.com', 'admin', 'Gati', 9),
-(30, 'aditya@hockeycurve.com', 'admin', 'Gati', 9),
-(32, 'sai@hockeycurve.com', 'admin', 'Lakshya', 9),
-(37, 'harsh@hockeycurve.com', 'admin', 'Lakshya', 9),
-(38, 'sravan@hockeycurve.com', 'admin', 'Lakshya', 9);
+INSERT INTO `user` (`id`, `name`, `username`, `password`, `team`, `role`) VALUES
+(1, 'Mohamed', 'mohamed.s@hockeycurve.com', 'garud', 'Garud', 3),
+(2, 'Sapna', 'sapna.g@hockeycurve.com', 'nischay', 'Nischay', 5),
+(3, 'Vishwadeep', 'vishwadeep.sonawale@hockeycurve.com', 'gati', 'Gati', 0),
+(6, 'Jasmeet', 'jasmeet.singh@hockeycurve.com', 'garud', 'Garud', 3),
+(7, 'Mahesh', 'mahesh.b@hockeycurve.com', 'nischay', 'Nischay', 5),
+(9, 'Pavan', 'pavan.vichare@hockeycurve.com', 'garud', 'Garud', 3),
+(10, 'Pooja', 'pooja@hockeycurve.com', 'nischay', 'Nischay', 5),
+(11, 'Adithi', 'adithi@hockeycurve.com', 'nischay', 'Nischay', 6),
+(13, 'Prathamesh', 'prathamesh.bhagwat@hockeycurve.com', 'garud', 'Garud', 3),
+(14, 'Nikhil', 'nikhil.g@hockeycurve.com', 'garud', 'Garud', 4),
+(15, 'Nikita', 'nikita.d@hockeycurve.com', 'veena', 'Veena', 1),
+(16, 'Siddhi', 'siddhi.phalke@hockeycurve.com', 'veena', 'Veena', 2),
+(17, 'Raj', 'raj.p@hockeycurve.com', 'gati', 'Gati', 0),
+(18, 'Hariharan', 'hariharanv@hockeycurve.com', 'veena', 'Veena', 1),
+(19, 'Tejshwini', 'tejshwini@hockeycurve.com', 'veena', 'Veena', 1),
+(20, 'Amar', 'apowar@hockeycurve.com', 'veena', 'Veena', 1),
+(21, 'Ninad', 'ninad.ganu@hockeycurve.com', 'veena', 'Veena', 1),
+(22, 'Bavika', 'bavika@hockeycurve.com', 'veena', 'Veena', 1),
+(23, 'Dinesh', 'dinesh@hockeycurve.com', 'admin', 'Lakshya', 9),
+(24, 'Priya', 'priya.rajput@hockeycurve.com', 'admin', 'Lakshya', 9),
+(25, 'Naved', 'naved.chowdhary@hockeycurve.com', 'lakshya', 'Lakshya', 7),
+(26, 'Manish', 'manish.madhavi@hockeycurve.com', 'lakshya', 'Lakshya', 7),
+(29, 'Shivam', 'shivam.singh@hockeycurve.com', 'admin', 'Gati', 9),
+(30, 'Aditya', 'aditya@hockeycurve.com', 'admin', 'Gati', 9),
+(32, 'Sai', 'sai@hockeycurve.com', 'admin', 'Lakshya', 9),
+(37, 'Harsh', 'harsh@hockeycurve.com', 'admin', 'Lakshya', 9),
+(38, 'Sravan', 'sravan@hockeycurve.com', 'admin', 'Lakshya', 9),
+(45, 'Rajeshri', 'rajeshri@hockeycurve.com', 'admin', 'HR', 9);
 
 -- --------------------------------------------------------
 
@@ -283,7 +289,7 @@ ALTER TABLE `veena_team`
 -- AUTO_INCREMENT for table `assign_task`
 --
 ALTER TABLE `assign_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `garud_team`
@@ -301,13 +307,13 @@ ALTER TABLE `hc_templates`
 -- AUTO_INCREMENT for table `tracker_data`
 --
 ALTER TABLE `tracker_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `veena_team`
