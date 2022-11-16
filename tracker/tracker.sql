@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2022 at 06:34 PM
+-- Generation Time: Nov 16, 2022 at 08:57 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,22 @@ SET time_zone = "+00:00";
 --
 -- Database: `tracker`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assign_task`
+--
+
+CREATE TABLE `assign_task` (
+  `id` int(11) NOT NULL,
+  `task_name` varchar(255) NOT NULL,
+  `temp_tbd` varchar(5) NOT NULL DEFAULT '0',
+  `assign_to` varchar(255) NOT NULL,
+  `time_v` int(255) NOT NULL,
+  `deviation_v` int(255) NOT NULL,
+  `status_v` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -127,7 +143,11 @@ INSERT INTO `tracker_data` (`id`, `campaign_name`, `client_name`, `agency_name`,
 (137, 'jasmeet', 'mpl', '', '2022-11-12 08:08:42', '2022-11-19 08:08:00', '', 'carousel,', 604758, ' Static Slider ,'),
 (138, 'fcat none test', 'tanishq', '', '2022-11-12 08:09:10', '2022-11-19 08:09:00', '', 'feed,', 604790, ' Moment Marketing + Geo Location ,'),
 (139, 'jasmeet124', 'amazon prime video', 'DBM', '2022-11-12 08:29:34', '2022-11-26 08:29:00', '', 'richMedia,', 1209566, ' Rich Media ,'),
-(140, 'demo ', 'tanishq', 'DBM', '2022-11-12 12:34:13', '2022-11-19 12:34:00', '', 'feed,', 604787, ' Moment Marketing + Geo Location ,');
+(140, 'demo ', 'tanishq', 'DBM', '2022-11-12 12:34:13', '2022-11-19 12:34:00', '', 'feed,', 604787, ' Moment Marketing + Geo Location ,'),
+(143, 'APV - Maja Ma - Launch - Watch Now', 'Amazon Prime Video', 'ROS', '2022-11-16 12:46:57', '2022-11-19 15:46:00', '', 'carousel,richMedia,', 269943, ' Vertical Slider , Rich Media , Carousel flip ,'),
+(145, '', '', '', '2022-11-16 13:02:37', '2022-11-19 13:05:00', '', 'swiper,carousel,', 259343, ' Swiper without feed , Vertical Slider , Static Slider ,'),
+(146, '', '', '', '2022-11-16 13:16:16', '2022-11-25 17:16:00', '', 'carousel,', 791984, ' Vertical Slider , Static Slider ,'),
+(147, 'APV - Maja Ma-DBM Pinkvilla', 'Amazon Prime Video', '', '2022-11-16 13:19:36', '2022-11-19 16:19:00', '', 'swiper,carousel,richMedia,', 269964, ' Swiper without feed , Rich Media , Carousel flip ,');
 
 -- --------------------------------------------------------
 
@@ -205,6 +225,12 @@ INSERT INTO `veena_team` (`id`, `name`, `task`, `time`, `assets`, `mail_id`) VAL
 --
 
 --
+-- Indexes for table `assign_task`
+--
+ALTER TABLE `assign_task`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `garud_team`
 --
 ALTER TABLE `garud_team`
@@ -239,6 +265,12 @@ ALTER TABLE `veena_team`
 --
 
 --
+-- AUTO_INCREMENT for table `assign_task`
+--
+ALTER TABLE `assign_task`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `garud_team`
 --
 ALTER TABLE `garud_team`
@@ -254,7 +286,7 @@ ALTER TABLE `hc_templates`
 -- AUTO_INCREMENT for table `tracker_data`
 --
 ALTER TABLE `tracker_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `user`

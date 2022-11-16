@@ -16,7 +16,7 @@ HC templates
 </nav>
 
 <div class="container">
-    <a href="add_new.php" class="btn btn-dark mb-3">Add New</a><a href="../" style="margin-left:10px;" class="btn btn-dark mb-3">Back</a>
+    <a href="add_new.php" class="btn btn-dark mb-3">Add New</a><a href="../admin.php" style="margin-left:10px;" class="btn btn-dark mb-3">Back</a>
     <table class="table table-hover text-center">
   <thead class="table-dark">
     <tr>

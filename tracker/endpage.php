@@ -55,8 +55,17 @@ while($row=mysqli_fetch_assoc($resultven)){
     }
     }
 
+    
+        
+    // Assign Task
+    $sql_tracker="SELECT * FROM `tracker_data`";
+    $result_tracker=mysqli_query($connectDB,$sql_tracker);
+    $row_tracker=mysqli_fetch_assoc($result_tracker);
+    echo $row_tracker['campaign_name'];
+
 ?>
 
+    <!-- $sql_assign="INSERT INTO `assign_task`(`task_name`,`temp_tbd`,`assign_to`,`time_v`, `deviation_v`, `status_v`) VALUES ('$campaign_name','$client_name','$agency_name','$start_date','$client_vertical','$temp','$diff')"; -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
