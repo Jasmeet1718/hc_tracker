@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 08:57 AM
+-- Generation Time: Nov 16, 2022 at 11:08 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,12 +30,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `assign_task` (
   `id` int(11) NOT NULL,
   `task_name` varchar(255) NOT NULL,
-  `temp_tbd` varchar(5) NOT NULL DEFAULT '0',
+  `temp_tbd` varchar(255) NOT NULL DEFAULT '0',
   `assign_to` varchar(255) NOT NULL,
   `time_v` int(255) NOT NULL,
   `deviation_v` int(255) NOT NULL,
   `status_v` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assign_task`
+--
+
+INSERT INTO `assign_task` (`id`, `task_name`, `temp_tbd`, `assign_to`, `time_v`, `deviation_v`, `status_v`) VALUES
+(69, 'new test', 'Rich Media', 'Veena', 5400, 0, 1),
+(70, 'new test', 'Mutual Funds', 'Veena', 10800, 0, 1),
+(71, 'title-2', 'Dropdown', 'Veena', 8100, 0, 0),
+(72, 'title-2', '360 Degree carousel', 'Veena', 10800, 0, 0),
+(73, 'title-5', 'Vertical Slider', 'Veena', 5400, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -74,46 +85,47 @@ CREATE TABLE `hc_templates` (
   `template` varchar(255) NOT NULL,
   `time_req_veena` int(100) NOT NULL,
   `time_req` int(100) NOT NULL,
-  `type` varchar(255) NOT NULL
+  `type` varchar(255) NOT NULL,
+  `development_assign` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `hc_templates`
 --
 
-INSERT INTO `hc_templates` (`sno`, `template`, `time_req_veena`, `time_req`, `type`) VALUES
-(3, 'Swiper without feed', 5400, 10800, 'swiper'),
-(4, 'Vertical Slider', 5400, 10800, 'carousel'),
-(5, 'Rich Media', 5400, 10800, 'richMedia'),
-(6, 'Countdown', 5400, 10800, 'timer'),
-(7, 'Video Creatives', 5400, 10800, 'video'),
-(8, 'CanvasFlip', 5400, 10800, 'flip'),
-(9, 'Card flip without feed', 5400, 10800, 'flip'),
-(10, 'Static Slider', 5400, 10800, 'carousel'),
-(11, 'Vertical Auto Scroll', 5400, 10800, 'animation'),
-(12, 'Time of the day - dynamic time only', 5400, 10800, 'dynamic'),
-(13, 'Search based', 5400, 11700, 'search'),
-(14, 'Carousel flip', 5400, 10800, 'carousel'),
-(15, 'CTA flip', 5400, 10800, 'animation'),
-(16, 'sensex/Nifty', 5400, 11700, 'api'),
-(17, 'Dynamic city', 5400, 11700, 'dynamic'),
-(18, 'Dropdown', 8100, 21600, 'interactive'),
-(19, 'Feed Based Creative', 8100, 21600, 'feed'),
-(20, 'New innovations', 10800, 259200, 'other'),
-(21, '360 Degree carousel', 10800, 23400, 'carousel'),
-(22, 'Swipe With Feed', 8100, 21600, 'feed'),
-(23, 'Moment Marketing (Sports API)', 16200, 172800, 'api'),
-(24, 'Conditional Countdown Timer', 8100, 86400, 'timer'),
-(25, 'Time of the day - dynamic content', 8100, 86400, 'dynamic'),
-(26, 'Weather', 8100, 86400, 'api'),
-(27, 'Geo Location', 8100, 86400, 'geo'),
-(28, 'Crypto', 10800, 129600, 'api'),
-(29, 'Mutual Funds', 10800, 129600, 'interactive'),
-(30, 'All Feed Based', 8100, 21600, 'feed'),
-(31, 'All Reco Based', 8100, 21600, 'redo'),
-(32, 'Video Moment Marketing', 9000, 86400, 'video'),
-(34, 'Moment Marketing + Geo Location', 16200, 259200, 'feed'),
-(35, 'Moment Marketing + Dynamic Products', 16200, 259200, 'feed+dynamic');
+INSERT INTO `hc_templates` (`sno`, `template`, `time_req_veena`, `time_req`, `type`, `development_assign`) VALUES
+(3, 'Swiper without feed', 5400, 10800, 'swiper', 'Garud'),
+(4, 'Vertical Slider', 5400, 10800, 'carousel', 'Garud'),
+(5, 'Rich Media', 5400, 10800, 'richMedia', 'Garud'),
+(6, 'Countdown', 5400, 10800, 'timer', 'Garud'),
+(7, 'Video Creatives', 5400, 10800, 'video', 'Garud'),
+(8, 'CanvasFlip', 5400, 10800, 'flip', 'Garud'),
+(9, 'Card flip without feed', 5400, 10800, 'flip', 'Garud'),
+(10, 'Static Slider', 5400, 10800, 'carousel', 'Garud'),
+(11, 'Vertical Auto Scroll', 5400, 10800, 'animation', 'Garud'),
+(12, 'Time of the day - dynamic time only', 5400, 10800, 'dynamic', 'Garud'),
+(13, 'Search based', 5400, 11700, 'search', 'Garud'),
+(14, 'Carousel flip', 5400, 10800, 'carousel', 'Garud'),
+(15, 'CTA flip', 5400, 10800, 'animation', 'Garud'),
+(16, 'sensex/Nifty', 5400, 11700, 'api', 'Nischay'),
+(17, 'Dynamic city', 5400, 11700, 'dynamic', 'Garud'),
+(18, 'Dropdown', 8100, 21600, 'interactive', 'Garud'),
+(19, 'Feed Based Creative', 8100, 21600, 'feed', 'Nischay'),
+(20, 'New innovations', 10800, 259200, 'other', 'Nischay'),
+(21, '360 Degree carousel', 10800, 23400, 'carousel', 'Nischay'),
+(22, 'Swipe With Feed', 8100, 21600, 'feed', 'Nischay'),
+(23, 'Moment Marketing (Sports API)', 16200, 172800, 'api', 'Nischay'),
+(24, 'Conditional Countdown Timer', 8100, 86400, 'timer', 'Nischay'),
+(25, 'Time of the day - dynamic content', 8100, 86400, 'dynamic', 'Nischay'),
+(26, 'Weather', 8100, 86400, 'api', 'Garud'),
+(27, 'Geo Location', 8100, 86400, 'geo', 'Garud'),
+(28, 'Crypto', 10800, 129600, 'api', 'Nischay'),
+(29, 'Mutual Funds', 10800, 129600, 'interactive', 'Nischay'),
+(30, 'All Feed Based', 8100, 21600, 'feed', 'Nischay'),
+(31, 'All Reco Based', 8100, 21600, 'redo', 'Nischay'),
+(32, 'Video Moment Marketing', 9000, 86400, 'video', 'Nischay'),
+(34, 'Moment Marketing + Geo Location', 16200, 259200, 'feed', 'Nischay'),
+(35, 'Moment Marketing + Dynamic Products', 16200, 259200, 'feed+dynamic', 'Nischay');
 
 -- --------------------------------------------------------
 
@@ -147,7 +159,10 @@ INSERT INTO `tracker_data` (`id`, `campaign_name`, `client_name`, `agency_name`,
 (143, 'APV - Maja Ma - Launch - Watch Now', 'Amazon Prime Video', 'ROS', '2022-11-16 12:46:57', '2022-11-19 15:46:00', '', 'carousel,richMedia,', 269943, ' Vertical Slider , Rich Media , Carousel flip ,'),
 (145, '', '', '', '2022-11-16 13:02:37', '2022-11-19 13:05:00', '', 'swiper,carousel,', 259343, ' Swiper without feed , Vertical Slider , Static Slider ,'),
 (146, '', '', '', '2022-11-16 13:16:16', '2022-11-25 17:16:00', '', 'carousel,', 791984, ' Vertical Slider , Static Slider ,'),
-(147, 'APV - Maja Ma-DBM Pinkvilla', 'Amazon Prime Video', '', '2022-11-16 13:19:36', '2022-11-19 16:19:00', '', 'swiper,carousel,richMedia,', 269964, ' Swiper without feed , Rich Media , Carousel flip ,');
+(147, 'APV - Maja Ma-DBM Pinkvilla', 'Amazon Prime Video', '', '2022-11-16 13:19:36', '2022-11-19 16:19:00', '', 'swiper,carousel,richMedia,', 269964, ' Swiper without feed , Rich Media , Carousel flip ,'),
+(148, 'title-5', '', '', '2022-11-16 13:39:52', '2022-11-25 13:39:00', '', 'carousel,richMedia,', 777548, 'Vertical Slider,'),
+(149, 'new test', 'mpl', '', '2022-11-16 14:19:29', '2022-11-26 14:19:00', '', 'richMedia,search,interactive,', 863971, 'Rich Media,Mutual Funds,'),
+(150, 'title-2', 'tanishq', '', '2022-11-16 15:08:29', '2022-11-26 15:08:00', '', 'swiper,carousel,richMedia,interactive,other,', 863971, 'Dropdown,360 Degree carousel,');
 
 -- --------------------------------------------------------
 
@@ -216,7 +231,7 @@ CREATE TABLE `veena_team` (
 --
 
 INSERT INTO `veena_team` (`id`, `name`, `task`, `time`, `assets`, `mail_id`) VALUES
-(1, 'Hari', '', 0, '', 'hariharanv@hockeycurve.com'),
+(1, 'Hari', 'title-5', 0, '', 'hariharanv@hockeycurve.com'),
 (2, 'Siddhi', 'demo ', 16200, '', 'siddhi.phalke@hockeycurve.com'),
 (3, 'Amar', 'jasmeet124', 5400, '', 'apowar@hockeycurve.com');
 
@@ -268,7 +283,7 @@ ALTER TABLE `veena_team`
 -- AUTO_INCREMENT for table `assign_task`
 --
 ALTER TABLE `assign_task`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `garud_team`
@@ -286,7 +301,7 @@ ALTER TABLE `hc_templates`
 -- AUTO_INCREMENT for table `tracker_data`
 --
 ALTER TABLE `tracker_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT for table `user`
