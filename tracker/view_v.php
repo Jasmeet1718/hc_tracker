@@ -119,6 +119,7 @@ error_reporting(E_ERROR | E_PARSE);
             $taskp=$rowvp['task'];
             $timep=$rowvp['time'];
             $idp=$rowvp['id'];
+            $sername=$_SESSION['name'];
         ?>
             <tr>
                 <td><?php echo $taskp ?></td>
@@ -129,10 +130,21 @@ error_reporting(E_ERROR | E_PARSE);
                 <?php 
                 $str="start".$idp;
                 if(isset($_POST[$str])){
-                    
-                    $sqlu="UPDATE `veena_team` SET `status`='1' WHERE id=$idp";
-                    $resultu=mysqli_query($connectDB,$sqlu);
+                    $sql100="SELECT * FROM `veena_team` WHERE name='$sername'";
+                $result100=mysqli_query($connectDB,$sql100);
+                $u="";
+                while($row100=mysqli_fetch_assoc($result100)){
+                    $u.=$row100["status"].",";
                 }
+                echo $u;
+                if(strpos($u, "1") !== false){
+                    ?> <script>alert("Complete your on going task")</script> <?php
+                 }
+                 else{
+                     $sqlu="UPDATE `veena_team` SET `status`='1' WHERE id=$idp";
+                 $resultu=mysqli_query($connectDB,$sqlu);
+                 }
+            }
                 ?>
             </tr>
        <?php } ?> 
