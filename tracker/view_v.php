@@ -124,7 +124,7 @@ error_reporting(E_ERROR | E_PARSE);
                 <td><?php echo $taskp ?></td>
                 <td><?php echo gmdate("H:i:s", $timep)  ?></td>
                 
-                <td><button name="start<?php echo $idp ?>">Start</button></td>
+                <td><button type="submit" name="start<?php echo $idp ?>">Start</button></td>
                 </form>
                 <?php 
                 $str="start".$idp;
