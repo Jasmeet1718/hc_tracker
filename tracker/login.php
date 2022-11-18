@@ -26,11 +26,19 @@ $password = $_POST["password"];
               if($row['role'] === '0'){
                 header("location: index.php");
               }else if($row['role'] === '2') {
-                header("location: veena.php");
+                header("location: veena/veena.php");
               }else if($row['role'] === '9' ) {
                 header("location: admin.php");
               }else if($row['role'] === '1') {
-                header("location: view_v.php");
+                header("location: veena/view_v.php");
+              }else if($row['role'] === '4') {
+                header("location: garud/garud.php");
+              }else if($row['role'] === '3') {
+                header("location: garud/view_g.php");
+              }else if($row['role'] === '5') {
+                header("location: nischay/view_n.php");
+              }else if($row['role'] === '6') {
+                header("location: nischay/nischay.php");
               }
               
             //   else{

@@ -30,7 +30,7 @@ if(!$_SESSION["username"] || $_SESSION["role"] !== '9'){
     <div class="box">
         <div class="admin-box">
         <a class="btn btn-success ad-btn" href="./index.php">Gati</a><br>
-        <a class="btn btn-success ad-btn" href="./veena.php">Veena</a><br>
+        <a class="btn btn-success ad-btn" href="veena/veena.php">Veena</a><br>
         <a class="btn btn-success ad-btn">Garud</a><br>
         <a class="btn btn-success ad-btn">Nischay</a><br>
         <a class="btn btn-success ad-btn">Lakshya</a><br>
