@@ -31,9 +31,9 @@ if(!$_SESSION["username"] || $_SESSION["role"] !== '9'){
         <div class="admin-box">
         <a class="btn btn-success ad-btn" href="./index.php">Gati</a><br>
         <a class="btn btn-success ad-btn" href="veena/veena.php">Veena</a><br>
-        <a class="btn btn-success ad-btn" href="garud/garud.php">Garud</a><br>
-        <a class="btn btn-success ad-btn" href="nischay/nischay.php">Nischay</a><br>
-        <a class="btn btn-success ad-btn" href="lakshya/lakshya.php">Lakshya</a><br>
+        <a class="btn btn-success ad-btn">Garud</a><br>
+        <a class="btn btn-success ad-btn">Nischay</a><br>
+        <a class="btn btn-success ad-btn">Lakshya</a><br>
             <a class="btn btn-danger ad-btn" href="./tracker_update">Add/edit templates </a>
         </div>
     </div>

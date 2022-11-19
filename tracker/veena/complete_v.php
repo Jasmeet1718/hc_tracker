@@ -47,10 +47,19 @@ if(!$_SESSION["username"]){
         <th>
             Time given 
         </th>
+        <th>
+            Deviation
+        </th>
+        <th>
+            Done by
+        </th>
+        <th>
+            Asset links
+        </th>
     </tr>
 
     <?php 
-        $sql="SELECT * FROM `assign_task` WHERE status_v = '2' ";
+        $sql="SELECT * FROM `assign_task` WHERE status_v = '2' AND assign_to='Veena'";
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
@@ -63,6 +72,15 @@ if(!$_SESSION["username"]){
                 </td>
                 <td>
                 <?php echo gmdate("H:i:s", $row['time_v']);   ?>
+                </td>
+                <td>
+                <?php echo gmdate("H:i:s", $row['deviation_v']);   ?>
+                </td>
+                <td>
+                <?php echo  $row['member'];  ?>
+                </td>
+                <td>
+                <?php echo $row['assets'];  ?>
                 </td>
             </tr> 
             <?php

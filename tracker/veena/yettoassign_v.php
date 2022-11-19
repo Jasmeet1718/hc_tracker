@@ -17,7 +17,7 @@ if(isset($_POST[$id100])){
     $sql101="SELECT * FROM `assign_task` WHERE id = $id101 ";
         $result101=mysqli_query($connectDB,$sql101);
         $row101=mysqli_fetch_assoc($result101);
-        $task101=$row101['task_name']."-".$row101['temp_tbd'];
+        $task101=$row101['task_name']."--".$row101['temp_tbd'];
         $time_v=$row101['time_v'];
     $members=$_POST['members'];
     $sql300="SELECT * FROM `user` WHERE team='Veena' AND name='$members' LIMIT 1" ;
