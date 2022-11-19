@@ -77,7 +77,7 @@ if(isset($_POST[$id100])){
     </tr>
 
     <?php 
-        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' ";
+        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' AND assign_to='Veena'";
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
