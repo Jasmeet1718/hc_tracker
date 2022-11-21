@@ -36,6 +36,15 @@ if(isset($_POST["submit"])){
     if($result){
         header("location: view_v.php");
     }
+
+    $assign="SELECT * FROM `hc_templates` WHERE `template`='$temp_tbd'";
+    $result_assign=mysqli_query($connectDB,$assign);
+    $team=mysqli_fetch_assoc($result_assign);
+    $development_assign=$team["development_assign"];
+    $time_req_veena=$team["time_req_veena"];
+
+    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`) VALUES ('$task_name','$temp_tbd','$development_assign','$time_req_veena','0','$time')";
+    $resultg=mysqli_query($connectDB,$sqlg);
 }
 ?>
 <!DOCTYPE html>
