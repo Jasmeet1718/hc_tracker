@@ -29,7 +29,7 @@ if(isset($_POST["submit"])){
         if ($deviation<0){
             $deviation=0;
         }
-    $sql="UPDATE `assign_task` SET `deviation_v`='$deviation',`status_v`='2',`member`='$member',`assign_time`='$assign_time',`assets`='$assets' WHERE `task_name`='$task_name' AND `temp_tbd`='$temp_tbd'";
+    $sql="UPDATE `assign_task` SET `deviation_v`='$deviation',`status_v`='2',`member`='$member',`assign_time`='$assign_time',`assets`='$assets' WHERE `task_name`='$task_name' AND `temp_tbd`='$temp_tbd' AND `assign_to`='Veena'";
     $result=mysqli_query($connectDB,$sql);
     $sqld="DELETE FROM `veena_team` WHERE id=$id";
     $resultd=mysqli_query($connectDB,$sqld);
