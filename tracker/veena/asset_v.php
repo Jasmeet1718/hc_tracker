@@ -41,9 +41,9 @@ if(isset($_POST["submit"])){
     $result_assign=mysqli_query($connectDB,$assign);
     $team=mysqli_fetch_assoc($result_assign);
     $development_assign=$team["development_assign"];
-    $time_req_veena=$team["time_req_veena"];
+    $time_req_dev=$team["time_req_dev"];
 
-    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`) VALUES ('$task_name','$temp_tbd','$development_assign','$time_req_veena','0','$time')";
+    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`) VALUES ('$task_name','$temp_tbd','$development_assign','$time_req_dev','0','$time')";
     $resultg=mysqli_query($connectDB,$sqlg);
 }
 ?>
