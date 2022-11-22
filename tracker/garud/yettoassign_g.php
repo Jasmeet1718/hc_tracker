@@ -17,15 +17,15 @@ if(isset($_POST[$id100])){
     $sql101="SELECT * FROM `assign_task` WHERE id = $id101 ";
         $result101=mysqli_query($connectDB,$sql101);
         $row101=mysqli_fetch_assoc($result101);
-        $task101=$row101['task_name']."-".$row101['temp_tbd'];
+        $task101=$row101['task_name']."--".$row101['temp_tbd'];
         $time_v=$row101['time_v'];
     $members=$_POST['members'];
-    $sql300="SELECT * FROM `user` WHERE team='Veena' AND name='$members' LIMIT 1" ;
+    $sql300="SELECT * FROM `user` WHERE team='Garud' AND name='$members' LIMIT 1" ;
                 $result300=mysqli_query($connectDB,$sql300);
                 $row300=mysqli_fetch_assoc($result300);
                 $username=$row300['username'];
                 $current_date=date("Y-m-d H:i:s");
-    $sql_assign="INSERT INTO `veena_team`(`name`,`task`,`time`,`mail_id`,`status`,`assign_time`) VALUES ('$members','$task101','$time_v','$username','0','$current_date')";
+    $sql_assign="INSERT INTO `garud_team`(`name`,`task`,`time`,`mail_id`,`status`,`assign_time`) VALUES ('$members','$task101','$time_v','$username','0','$current_date')";
     $result_assign=mysqli_query($connectDB,$sql_assign);
     $sql_as="UPDATE `assign_task` SET `status_v`='1' WHERE id='$id101'";
     $result_as=mysqli_query($connectDB,$sql_as);
@@ -47,7 +47,7 @@ if(isset($_POST[$id100])){
     <h1 class="heading">Yet to assign Task</h1>
     <style>
         table{
-            width: 100%;
+            width: 80%;
             margin: 20px 0;
         }
 
@@ -77,7 +77,7 @@ if(isset($_POST[$id100])){
     </tr>
 
     <?php 
-        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' ";
+        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' AND assign_to='Garud' ";
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
@@ -94,7 +94,7 @@ if(isset($_POST[$id100])){
                 <td> 
                     <form action="" method="post">
                 <select name="members" id="members">
-                <?php $sql5="SELECT * FROM `user` WHERE team='Veena'" ;
+                <?php $sql5="SELECT * FROM `user` WHERE team='Garud'" ;
                 $result5=mysqli_query($connectDB,$sql5);
                 while($row5=mysqli_fetch_assoc($result5)){ ?>
                         <option value="<?php echo $row5['name'] ?>"><?php echo $row5['name'] ?></option>

@@ -23,7 +23,7 @@ if(!$_SESSION["username"]){
     <h1 class="heading">Completed Task</h1>
     <style>
         table{
-            width: 100%;
+            width: 80%;
             margin: 20px 0;
         }
 
@@ -50,7 +50,7 @@ if(!$_SESSION["username"]){
     </tr>
 
     <?php 
-        $sql="SELECT * FROM `assign_task` WHERE status_v = '2' ";
+        $sql="SELECT * FROM `assign_task` WHERE status_v = '2' AND assign_to='Garud'";
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>

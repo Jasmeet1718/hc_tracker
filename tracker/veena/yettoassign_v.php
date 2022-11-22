@@ -47,8 +47,8 @@ if(isset($_POST[$id100])){
     <h1 class="heading">Yet to assign Task</h1>
     <style>
         table{
-            width: 100%;
-            margin: 20px 0;
+            width: 80%;
+            margin: 20px auto;
         }
 
         table, th, td {
@@ -60,7 +60,7 @@ if(isset($_POST[$id100])){
         padding:10px;
     }
     </style>
-<table>
+<table id="table_id">
     <tr>
         <th>
             Task name 
@@ -81,7 +81,7 @@ if(isset($_POST[$id100])){
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
-            <tr>
+            <tr class="tbrow">
                 <td>
                     <?php echo $row['task_name'] ?>
                 </td>
@@ -109,6 +109,7 @@ if(isset($_POST[$id100])){
     ?>
 
 </table>
+<div id="pagination"></div>
 <?php } else if($_SESSION["role"] == '0') {
             header("location: ../index.php");
         } else if($_SESSION["role"] == '1') {
@@ -126,4 +127,24 @@ if(isset($_POST[$id100])){
         }
         ?>
 </body>
+<script>
+    var items = $("#table_id .tbrow");
+  console.log(items.length)
+  var numItems = items.length;
+    var perPage = 10;
+    items.slice(perPage).hide();
+
+    console.log($('#pagination'));
+    $('#pagination').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "",
+        nextText: "",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            }
+        });
+</script>
 </html>

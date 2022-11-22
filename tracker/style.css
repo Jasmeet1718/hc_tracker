@@ -2,7 +2,7 @@
   margin-top: 30px;
   color: #2096f3;
   text-align: center;
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }
 
 /* Admin Page */
@@ -33,7 +33,7 @@
 
 .assign_box {
   width: 70%;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
   padding: 10px;
 }
 
@@ -41,4 +41,24 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+/* Pagination */
+
+#pagination {
+  display: flex;
+  justify-content: center;
+}
+#pagination ul {
+  display: flex;
+}
+#pagination li {
+  list-style-type: none;
+  margin: 10px 0px;
+  padding: 6px 10px;
+}
+
+#pagination li.active {
+  margin: 8px 5px;
+  border: 1px solid #000;
 }

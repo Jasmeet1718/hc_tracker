@@ -2,7 +2,7 @@
 include "../conn.php";
 session_start();
 if(!$_SESSION["username"]){
-    header("location: login.php");
+    header("location: ../login.php");
 }
 error_reporting(E_ERROR | E_PARSE); 
 
@@ -36,7 +36,7 @@ error_reporting(E_ERROR | E_PARSE);
             padding: 8px;
         }
 
-        .table {
+        .tables {
             margin-left: auto;
             margin-right: auto;
         }
@@ -50,14 +50,17 @@ error_reporting(E_ERROR | E_PARSE);
 </head>
 
 <body>
-    <?php if($_SESSION["role"]==='2'){
-         ?> <button><a href="./veena.php">Back</a></button> 
-        <?php }
-       else if($_SESSION["role"]==='1'){ ?> <button><a href="../logout.php">Logout</a></button> <?php } 
+    <?php if($_SESSION["role"]==='2' || $_SESSION["role"]==='1' || $_SESSION["role"]==='9'){
+        if($_SESSION["role"]==='2' || $_SESSION["role"]==='9'){
+            ?> <button><a href="./veena.php">Back</a></button> 
+            <?php
+        }
+        else if($_SESSION["role"]==='1'){ ?> <button><a href="../logout.php">Logout</a></button> <?php }
+        
     $mail_id=$_SESSION["username"] ?>
     <div class="box">
         <h1 class="heading">Veena Team</h1>
-        <table class="table">
+        <table class="tables">
             <tr>
                 <th>Task assigned</th>
                 <th>Countdown ETA</th>
@@ -112,7 +115,7 @@ error_reporting(E_ERROR | E_PARSE);
 
     <div class="box2">
         <h2>Task in queue</h2>
-        <table class="table">
+        <table class="tables">
             <tr>
                 <th>Task pending</th>
                 <th>Time given</th>
@@ -162,6 +165,25 @@ error_reporting(E_ERROR | E_PARSE);
         </table>
 
     </div>
+
+    <?php } else if($_SESSION["role"] == '0') {
+            header("location: ../index.php");
+        } else if($_SESSION["role"] == '1') {
+            header("location: ../veena/view_v.php");
+        } else if($_SESSION["role"] == '2') {
+            header("location: ../veena/veena.php");    
+        } else if($_SESSION["role"] == '3') {
+            header("location: ../garud/view_g.php");
+        } else if($_SESSION["role"] == '4') {
+            header("location: ../garud/garud.php");    
+        } else if($_SESSION["role"] == '5') {
+            header("location: ../nischay/view_n.php");
+        } else if($_SESSION["role"] == '6') {
+            header("location: ../nischay/nischay.php");
+        } else if($_SESSION["role"] == '7') {
+            header("location: ../lakshya/view_l.php");
+        } 
+         ?>
     
 </body>
 

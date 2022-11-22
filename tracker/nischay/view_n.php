@@ -52,7 +52,7 @@ error_reporting(E_ERROR | E_PARSE);
 <body>
     <?php if($_SESSION["role"]==='5' || $_SESSION["role"]==='6' || $_SESSION["role"]==='9'){
 
-    if($_SESSION["role"]==='6'){ ?> <button><a href="./nischay.php">Back</a></button>  <?php } 
+    if($_SESSION["role"]==='6' || $_SESSION["role"]==='9'){ ?> <button><a href="./nischay.php">Back</a></button>  <?php } 
     $mail_id=$_SESSION["username"] ?>
     <button><a href="../logout.php">Logout</a></button>
     <div class="box">

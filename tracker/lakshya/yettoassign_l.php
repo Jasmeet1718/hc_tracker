@@ -47,7 +47,7 @@ if(isset($_POST[$id100])){
     <h1 class="heading">Yet to assign Task</h1>
     <style>
         table{
-            width: 100%;
+            width: 80%;
             margin: 20px 0;
         }
 
