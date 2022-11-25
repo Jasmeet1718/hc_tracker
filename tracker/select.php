@@ -25,14 +25,8 @@ if(isset($_POST['submit'])){
        
         $resultF=mysqli_query($connectDB,$sqlF);
         
-        $sql11="SELECT * FROM `hc_templates` WHERE `template` = '$tem2' LIMIT 1";
-    $result11=mysqli_query($connectDB,$sql11);
-    $row11=mysqli_fetch_assoc($result11);
-    $time_req_veena=$row11["time_req_veena"];
-    $sql_assign="INSERT INTO `assign_task`(`task_name`,`temp_tbd`,`assign_to`,`time_v`,`status_v`) VALUES ('$campaign_name','$tem2','Veena','$time_req_veena','0')";
-    $result_assign=mysqli_query($connectDB,$sql_assign);
     } 
-    if($result_assign){
+    if($resultF){
         header("location: endpage.php?id=$id");
     }
 }

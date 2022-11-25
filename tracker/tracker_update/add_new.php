@@ -2,10 +2,10 @@
 include "../conn.php";
 if(isset($_POST['submit'])){
     $template=$_POST['template'];
-    $time_req=$_POST['time_req'];
+    $time_req=$_POST['time_req']*60;
     $type=$_POST['type'];
-    $time_req_veena=$_POST['time_req_veena'];
-    $time_req_dev=$_POST['time_req_dev'];
+    $time_req_veena=$_POST['time_req_veena']*60;
+    $time_req_dev=$_POST['time_req_dev']*60;
     $development_assign=$_POST['development_assign'];
     
     $sql="INSERT INTO `hc_templates`(`template`,`time_req_veena`,`time_req_dev`, `time_req`, `type`,`development_assign`) VALUES ('$template','$time_req_veena','$time_req_dev','$time_req','$type','$development_assign')";
@@ -57,17 +57,17 @@ HC templates - Add data
                     <input type="text" class="form-control" name="template">
                 </div>
                 <div class="col">
-                    <label class="form-label">Total Time Required (seconds)</label>
+                    <label class="form-label">Total Time Required (mins)</label>
                     <input type="text" class="form-control" name="time_req" >
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label class="form-label">Time required by Veena team(seconds)</label>
+                    <label class="form-label">Time required by Veena team (mins)</label>
                     <input type="text" class="form-control" name="time_req_veena">
                 </div>
                 <div class="col">
-                    <label class="form-label">Time required by Development team(seconds)</label>
+                    <label class="form-label">Time required by Development team(mins)</label>
                     <input type="text" class="form-control" name="time_req_dev" >
                 </div>
             </div>

@@ -74,9 +74,9 @@ if(isset($_POST['submit'])){
     <?php } ?>
     <h1 class="heading">HC Tracker</h1>
     <form action="" method="post">
-        <label for="campaign_name">Enter Campaign name: </label> <input name="campaign_name" type="text"><br><br>
-        <label for="client_name">Enter Client name: </label> <input name="client_name" type="text"><br><br>
-        <label for="agency_name">Enter Agency name: </label> <input name="agency_name" type="text"><br><br>
+        <label for="campaign_name">Enter Campaign name: </label> <input name="campaign_name" type="text" required><br><br>
+        <label for="client_name">Enter Client name: </label> <input name="client_name" type="text" required><br><br>
+        <label for="agency_name">Enter Agency name: </label> <input name="agency_name" type="text" required><br><br>
         <label for="start_date">Enter Campaign start date: </label> <input name="start_date" type="datetime-local"><br><br>
         <label for="client_vertical">Enter Client Vertical: </label> <input name="client_vertical" type="text"><br><br>
         <label for="templates">Select templates: </label>

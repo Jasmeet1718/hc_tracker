@@ -11,12 +11,28 @@ if(isset($_POST['id'])) {
     $id=$_GET['id'];
 }
 error_reporting(E_ERROR | E_PARSE);
-if(isset($_POST['send'])){
-    
-    
-};
 
+if(isset($_POST['submit'])){
 
+    $sql10="SELECT * FROM `tracker_data` WHERE id = $id LIMIT 1";
+    $result10=mysqli_query($connectDB,$sql10);
+    $row10=mysqli_fetch_assoc($result10);
+  $campaign_name=$row10['campaign_name'];
+  $tempmade=$row10['tempmade'];
+
+  $ttt=explode("," , $tempmade);
+  for ($i=0; $i<((count($ttt))-1);$i++){
+    $sql11="SELECT * FROM `hc_templates` WHERE `template` = '$ttt[$i]' LIMIT 1";
+    $result11=mysqli_query($connectDB,$sql11);
+    $row11=mysqli_fetch_assoc($result11);
+    $time_req_veena=$row11["time_req_veena"];
+    $sql_assign="INSERT INTO `assign_task`(`task_name`,`temp_tbd`,`assign_to`,`time_v`,`status_v`) VALUES ('$campaign_name','$ttt[$i]','Veena','$time_req_veena','0')";
+    $result_assign=mysqli_query($connectDB,$sql_assign);
+    } 
+    if($result_assign){
+        header("location:index.php");
+    }
+}
 ?>
 
     
@@ -31,8 +47,8 @@ if(isset($_POST['send'])){
 </head>
 <body>
 <h1 class="heading">Send mail</h1>
-    <form action="" method="post">
-      <button onclick="location='../'">Back</button> 
+    <form method="post">
+      <button><a href="./">Back</a></button> 
     <br>
     <div>
         <h4>You have selected the following templates:- </h4>
@@ -40,20 +56,22 @@ if(isset($_POST['send'])){
         $sql10="SELECT * FROM `tracker_data` WHERE id = $id LIMIT 1";
         $result10=mysqli_query($connectDB,$sql10);
         $row10=mysqli_fetch_assoc($result10);
-      $campaign_name=$row10['campaign_name'];
-      $sql11="SELECT * FROM `assign_task` WHERE task_name='$campaign_name'";
-      $result11=mysqli_query($connectDB,$sql11);
-          while($row11=mysqli_fetch_assoc($result11)){
+            $temps=$row10["tempmade"]; 
+            $tt=explode(",",$temps);
             ?>
             <ul>
-                <li>
-                    <?php echo $row11["temp_tbd"] ?>  
-                </li>
-            </ul>
             <?php
-        }
-        ?>
-        <br><button type="submit" name="send">
+            
+            for ($i=0; $i<((count($tt))-1);$i++){
+                ?> <li>
+                    <?php echo $tt[$i] ?>
+                </li><?php
+            
+            }
+            ?>
+            </ul>     
+        <br>
+        <button type="submit" name="submit">
             Send mail
         </button>
         </form>

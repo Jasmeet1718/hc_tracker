@@ -21,9 +21,9 @@ HC templates
   <thead class="table-dark">
     <tr>
       <th style="padding-left:150px">Template</th>
-      <th>Time required by Veena(seconds)</th>
-      <th>Time required for development(seconds)</th>
-      <th>Total Time required(seconds)</th>
+      <th>Time required by Veena(Mins)</th>
+      <th>Time required for development(Mins)</th>
+      <th>Total Time required(Mins)</th>
       <th style="padding-left:50px">Type</th>
       <th>Development team</th>
       <th>Action</th>
@@ -39,9 +39,9 @@ HC templates
 
       <tr>
        <td><?php echo $row['template']?></td>
-       <td><?php echo $row['time_req_veena']?></td>
-       <td><?php echo $row['time_req_dev']?></td>
-       <td><?php echo $row['time_req']?></td>
+       <td><?php echo ((int)$row['time_req_veena'])/60?></td>
+       <td><?php echo ((int)$row['time_req_dev'])/60?></td>
+       <td><?php echo ((int)$row['time_req'])/60?></td>
        <td><?php echo $row['type']?></td>
        <td><?php echo $row['development_assign']?></td>
       <td>

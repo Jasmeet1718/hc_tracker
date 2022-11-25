@@ -66,9 +66,9 @@ if(isset($_POST['submit'])){
       $templates=$row['templates'];
     ?>
     <form action="" method="post">
-        <label for="campaign_name">Enter Campaign name: </label> <input name="campaign_name" type="text" value="<?php echo $row['campaign_name']?>"><br><br>
-        <label for="client_name">Enter Client name: </label> <input name="client_name" type="text" value="<?php echo $row['client_name']?>"><br><br>
-        <label for="agency_name">Enter Agency name: </label> <input name="agency_name" type="text" value="<?php echo $row['agency_name']?>"><br><br>
+        <label for="campaign_name">Enter Campaign name: </label> <input required name="campaign_name" type="text" value="<?php echo $row['campaign_name']?>"><br><br>
+        <label for="client_name">Enter Client name: </label> <input required name="client_name" type="text" value="<?php echo $row['client_name']?>"><br><br>
+        <label for="agency_name">Enter Agency name: </label> <input required name="agency_name" type="text" value="<?php echo $row['agency_name']?>"><br><br>
         <label for="start_date">Enter Campaign start date: </label> <input name="start_date" type="datetime-local" value="<?php echo $row['start_date']?>"><br><br>
         <label for="client_vertical">Enter Client Vertical: </label> <input name="client_vertical" type="text" value="<?php echo $row['client_vertical']?>"><br><br>
         <label for="templates">Select templates: </label>

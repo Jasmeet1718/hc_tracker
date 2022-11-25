@@ -56,12 +56,21 @@ $time = date('Y-m-d H:i:s');
             ?>
                 <tbody>
                     <tr>
-                        <td><?php echo $row['task_name']; ?></td>
+                        <td><?php echo $row['task_name']; ?>--<?php echo $row['temp_tbd']; ?></td>
                         <td><a href="<?php echo $row['previews']; ?>">URL</a></td>
                         <td><a href="<?php echo $row['adtags']; ?>">URL</a></td>
+                        <form method="post">
+                            <td><button type="submit" name="submit-<?php echo $row['id']; ?>">Shipped</button></td>
+                        </form>
                     </tr>
                 </tbody>
             <?php
+            if(isset($_POST['submit-'.$row["id"]])){
+                $name=$_SESSION['name'];
+                $id=$row['id'];
+                $sqls="UPDATE `assign_task` SET `deviation_v`='NA',`status_v`='2',`member`='$name' WHERE `id`='$id' AND `assign_to`='Gati'";
+                $results=mysqli_query($connectDB,$sqls);
+            }
         }
    ?>
     </table>

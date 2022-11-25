@@ -4,9 +4,9 @@ $sno=$_GET['sno'];
 
 if(isset($_POST['submit'])){
     $template=$_POST['template'];
-    $time_req_veena=$_POST['time_req_veena'];
-    $time_req_dev=$_POST['time_req_dev'];
-    $time_req=$_POST['time_req'];
+    $time_req_veena=$_POST['time_req_veena']*60;
+    $time_req_dev=$_POST['time_req_dev']*60;
+    $time_req=$_POST['time_req']*60;
     $type=$_POST['type'];
     $development_assign=$_POST['development_assign'];
 
@@ -63,18 +63,18 @@ $row=mysqli_fetch_assoc($result);
                     <input type="text" class="form-control" name="template" value="<?php echo $row['template']?>">
                 </div>
                 <div class="col">
-                    <label class="form-label">Time Require</label>
-                    <input type="text" class="form-control" name="time_req" value="<?php echo $row['time_req']?>">
+                    <label class="form-label">Time Require(mins)</label>
+                    <input type="text" class="form-control" name="time_req" value="<?php echo ((int)$row['time_req'])/60?>">
                 </div>
             </div>
             <div class="row mb-3">
                 <div class="col">
-                    <label class="form-label">Time required by Veena team(seconds)</label>
-                    <input type="text" class="form-control" name="time_req_veena" value="<?php echo $row['time_req_veena']?>">
+                    <label class="form-label">Time required by Veena team(mins)</label>
+                    <input type="text" class="form-control" name="time_req_veena" value="<?php echo ((int)$row['time_req_veena'])/60?>">
                 </div>
                 <div class="col">
-                    <label class="form-label">Time required by Development team(seconds)</label>
-                    <input type="text" class="form-control" name="time_req_dev" value="<?php echo $row['time_req_dev']?>">
+                    <label class="form-label">Time required by Development team(mins)</label>
+                    <input type="text" class="form-control" name="time_req_dev" value="<?php echo ((int)$row['time_req_dev'])/60?>">
                 </div>
             </div>
             <div class="row mb-3">
