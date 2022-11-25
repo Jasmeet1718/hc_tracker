@@ -15,11 +15,11 @@ if(!$_SESSION["username"]){
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
-    <title>Task Assign Page</title>
+    <title>Queue Page</title>
     <style>
         table{
             width: 80%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
 
         table, th, td {

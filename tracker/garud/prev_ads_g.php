@@ -42,9 +42,8 @@ if(isset($_POST["submit"])){
     $result_assign=mysqli_query($connectDB,$assign);
     $team=mysqli_fetch_assoc($result_assign);
     $development_assign=$team["development_assign"];
-    $time_req_veena=$team["time_req_veena"];
 
-    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`) VALUES ('$task_name','$temp_tbd','Gati','$time_req_veena','0','$time')";
+    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`,`previews`,`adtags`) VALUES ('$task_name','$temp_tbd','Gati','900','0','$time','$prev','$adtag')";
     $resultg=mysqli_query($connectDB,$sqlg);
 }
 ?>
@@ -87,8 +86,8 @@ if(isset($_POST["submit"])){
         <div class="text">You have completed <span style="color:red"><?php echo $row["task"] ?></span></div>
         <div class="text">please share the link for assets</div>
         
-        <input name="prev" type="text">
-        <input name="adtag" type="text">
+        <input name="prev" type="text" placeholder="Preview link">
+        <input name="adtag" type="text" placeholder="Adtag link">
         <button name="submit" class="submit">submit</button>
         </form>
         <button class="back"><a href="view_g.php">back</a></button>

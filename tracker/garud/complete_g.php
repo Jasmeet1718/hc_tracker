@@ -24,7 +24,7 @@ if(!$_SESSION["username"]){
     <style>
         table{
             width: 80%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
 
         table, th, td {
@@ -36,7 +36,7 @@ if(!$_SESSION["username"]){
         padding:10px;
     }
     </style>
-<table>
+<table id="table_id">
     <tr>
         <th>
             Task name 
@@ -47,6 +47,18 @@ if(!$_SESSION["username"]){
         <th>
             Time given 
         </th>
+        <th>
+            Deviation
+        </th>
+        <th>
+            Done by
+        </th>
+        <th>
+            Previews links
+        </th>
+        <th>
+            Adtags links
+        </th>
     </tr>
 
     <?php 
@@ -54,7 +66,7 @@ if(!$_SESSION["username"]){
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
-            <tr>
+            <tr class="tbrow">
                 <td>
                     <?php echo $row['task_name'] ?>
                 </td>
@@ -64,12 +76,25 @@ if(!$_SESSION["username"]){
                 <td>
                 <?php echo gmdate("H:i:s", $row['time_v']);   ?>
                 </td>
+                <td>
+                <?php echo gmdate("H:i:s", $row['deviation_v']);   ?>
+                </td>
+                <td>
+                <?php echo  $row['member'];  ?>
+                </td>
+                <td>
+                <?php echo $row['previews'];  ?>
+                </td>
+                <td>
+                <?php echo $row['adtags'];  ?>
+                </td>
             </tr> 
             <?php
         }
     ?>
 
 </table>
+<div id="pagination"></div>
 <?php } else if($_SESSION["role"] == '0') {
             header("location: ../index.php");
         } else if($_SESSION["role"] == '1') {
@@ -86,5 +111,26 @@ if(!$_SESSION["username"]){
             header("location: ../lakshya/view_l.php");
         }
  ?>
+
+ <script>
+    var items = $("#table_id .tbrow");
+  console.log(items.length)
+  var numItems = items.length;
+    var perPage = 10;
+    items.slice(perPage).hide();
+
+    console.log($('#pagination'));
+    $('#pagination').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "",
+        nextText: "",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            }
+        });
+</script>
 </body>
 </html>

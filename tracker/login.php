@@ -46,11 +46,11 @@ $password = $_POST["password"];
             //   }
 
             }else{
-          echo "<div>Username or Password is incorrect</div>";
+          echo "<div style='width: 100%;text-align:center; position: absolute; top: 40px; left: 50%; margin: 20px 0; transform: translateX(-50%);'>Username or Password is incorrect</div>";
         }
         }
     }else{
-      echo "<div>Username or Password is incorrect</div>";
+      echo "<div style='width: 100%;text-align:center; position: absolute; top: 40px; left: 50%; margin: 20px 0; transform: translateX(-50%);'>Username or Password is incorrect</div>";
     }
 }
 
@@ -63,9 +63,10 @@ $password = $_POST["password"];
     <style>
       .container {
         width: 300px;
-        height: 150px;
+        height: 200px;
         padding: 10px;
         border: 1px solid black;
+        margin: 40px auto;
       }
 
       /* Style all input fields */
@@ -82,7 +83,7 @@ $password = $_POST["password"];
   </head>
 
   <body>
-    <p style="text-align: center; width: 300px; height: 5px; font-size: 20px">
+    <p style="text-align: center; font-size: 20px; margin-top: 20px;">
       <strong> Login</strong>
     </p>
 

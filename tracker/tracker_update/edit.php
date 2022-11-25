@@ -4,10 +4,13 @@ $sno=$_GET['sno'];
 
 if(isset($_POST['submit'])){
     $template=$_POST['template'];
+    $time_req_veena=$_POST['time_req_veena'];
+    $time_req_dev=$_POST['time_req_dev'];
     $time_req=$_POST['time_req'];
     $type=$_POST['type'];
+    $development_assign=$_POST['development_assign'];
 
-    $sql="UPDATE `hc_templates` SET `template`='$template',`time_req`='$time_req',`type`='$type' WHERE sno=$sno";
+    $sql="UPDATE `hc_templates` SET `template`='$template',`time_req_veena`='$time_req_veena',`time_req_dev`='$time_req_dev',`time_req`='$time_req',`type`='$type',`development_assign`='$development_assign' WHERE sno=$sno";
     $result=mysqli_query($connectDB,$sql);
 
     if($result){
@@ -64,9 +67,25 @@ $row=mysqli_fetch_assoc($result);
                     <input type="text" class="form-control" name="time_req" value="<?php echo $row['time_req']?>">
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Time required by Veena team(seconds)</label>
+                    <input type="text" class="form-control" name="time_req_veena" value="<?php echo $row['time_req_veena']?>">
+                </div>
+                <div class="col">
+                    <label class="form-label">Time required by Development team(seconds)</label>
+                    <input type="text" class="form-control" name="time_req_dev" value="<?php echo $row['time_req_dev']?>">
+                </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col">
                 <label class="form-label">Type</label>
                 <input type="text" class="form-control" name="type"  value="<?php echo $row['type']?>">
+            </div>
+                <div class="col">
+                    <label class="form-label">Development team(Garud/Nischay)</label>
+                    <input type="text" class="form-control" name="development_assign" value="<?php echo $row['development_assign']?>">
+                </div>
             </div>
             <div>
                 <button type="submit" class="btn btn-success" name="submit">Update</button>

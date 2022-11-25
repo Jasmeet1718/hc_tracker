@@ -68,6 +68,7 @@ if(isset($_POST['submit'])){
 <body>
     <?php if($_SESSION["role"] == '0' || $_SESSION["role"] == '9') { ?>
         <button><a href="logout.php">logout</a></button>
+        <button><a href="taskship.php">Task ship</a></button>
         <?php if($_SESSION["role"] == '9') { ?>
     <a class="btn btn-primary" href="./admin.php">Back</a>
     <?php } ?>
@@ -98,7 +99,6 @@ if(isset($_POST['submit'])){
 <?php } ?>
     <script>
 let $select = $('#templates_drop').multiselect({
-  //includeSelectAllOption: false,
   enableFiltering: true,
   includeFilterClearBtn: true,
   enableCaseInsensitiveFiltering: true

@@ -48,7 +48,7 @@ if(isset($_POST[$id100])){
     <style>
         table{
             width: 80%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
 
         table, th, td {
@@ -60,7 +60,7 @@ if(isset($_POST[$id100])){
         padding:10px;
     }
     </style>
-<table>
+<table id="table_id">
     <tr>
         <th>
             Task name 
@@ -72,6 +72,9 @@ if(isset($_POST[$id100])){
             Time given 
         </th>
         <th>
+            Assets link  
+        </th>
+        <th>
             Members  
         </th>
     </tr>
@@ -81,7 +84,7 @@ if(isset($_POST[$id100])){
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
-            <tr>
+            <tr class="tbrow">
                 <td>
                     <?php echo $row['task_name'] ?>
                 </td>
@@ -90,6 +93,9 @@ if(isset($_POST[$id100])){
                 </td>
                 <td>
                 <?php echo gmdate("H:i:s", $row['time_v']);   ?>
+                </td>
+                <td>
+                    <a target="_blank" href="<?php echo $row['assets']; ?>">assets link</a>
                 </td>
                 <td> 
                     <form action="" method="post">
@@ -109,6 +115,7 @@ if(isset($_POST[$id100])){
     ?>
 
 </table>
+<div id="pagination"></div>
 <?php } else if($_SESSION["role"] == '0') {
             header("location: ../index.php");
         } else if($_SESSION["role"] == '1') {
@@ -125,5 +132,25 @@ if(isset($_POST[$id100])){
             header("location: ../lakshya/view_l.php");
         }
         ?>
+        <script>
+    var items = $("#table_id .tbrow");
+  console.log(items.length)
+  var numItems = items.length;
+    var perPage = 10;
+    items.slice(perPage).hide();
+
+    console.log($('#pagination'));
+    $('#pagination').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "",
+        nextText: "",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            }
+        });
+</script>
 </body>
 </html>

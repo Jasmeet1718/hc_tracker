@@ -17,15 +17,15 @@ if(isset($_POST[$id100])){
     $sql101="SELECT * FROM `assign_task` WHERE id = $id101 ";
         $result101=mysqli_query($connectDB,$sql101);
         $row101=mysqli_fetch_assoc($result101);
-        $task101=$row101['task_name']."-".$row101['temp_tbd'];
+        $task101=$row101['task_name']."--".$row101['temp_tbd'];
         $time_v=$row101['time_v'];
     $members=$_POST['members'];
-    $sql300="SELECT * FROM `user` WHERE team='Veena' AND name='$members' LIMIT 1" ;
+    $sql300="SELECT * FROM `user` WHERE team='Nischay' AND name='$members' LIMIT 1" ;
                 $result300=mysqli_query($connectDB,$sql300);
                 $row300=mysqli_fetch_assoc($result300);
                 $username=$row300['username'];
                 $current_date=date("Y-m-d H:i:s");
-    $sql_assign="INSERT INTO `veena_team`(`name`,`task`,`time`,`mail_id`,`status`,`assign_time`) VALUES ('$members','$task101','$time_v','$username','0','$current_date')";
+    $sql_assign="INSERT INTO `nischay_team`(`name`,`task`,`time`,`mail_id`,`status`,`assign_time`) VALUES ('$members','$task101','$time_v','$username','0','$current_date')";
     $result_assign=mysqli_query($connectDB,$sql_assign);
     $sql_as="UPDATE `assign_task` SET `status_v`='1' WHERE id='$id101'";
     $result_as=mysqli_query($connectDB,$sql_as);
@@ -48,7 +48,7 @@ if(isset($_POST[$id100])){
     <style>
         table{
             width: 80%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
 
         table, th, td {
@@ -60,7 +60,7 @@ if(isset($_POST[$id100])){
         padding:10px;
     }
     </style>
-<table>
+<table id="table_id">
     <tr>
         <th>
             Task name 
@@ -72,16 +72,19 @@ if(isset($_POST[$id100])){
             Time given 
         </th>
         <th>
+            Assets link  
+        </th>
+        <th>
             Members  
         </th>
     </tr>
 
     <?php 
-        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' ";
+        $sql="SELECT * FROM `assign_task` WHERE status_v = '0' AND assign_to='Nischay' ";
         $result=mysqli_query($connectDB,$sql);
         while($row=mysqli_fetch_assoc($result)){
             ?>
-            <tr>
+            <tr class="tbrow">
                 <td>
                     <?php echo $row['task_name'] ?>
                 </td>
@@ -91,10 +94,13 @@ if(isset($_POST[$id100])){
                 <td>
                 <?php echo gmdate("H:i:s", $row['time_v']);   ?>
                 </td>
+                <td>
+                    <a target="_blank" href="<?php echo $row['assets']; ?>">assets link</a>
+                </td>
                 <td> 
                     <form action="" method="post">
                 <select name="members" id="members">
-                <?php $sql5="SELECT * FROM `user` WHERE team='Veena'" ;
+                <?php $sql5="SELECT * FROM `user` WHERE team='Nischay'" ;
                 $result5=mysqli_query($connectDB,$sql5);
                 while($row5=mysqli_fetch_assoc($result5)){ ?>
                         <option value="<?php echo $row5['name'] ?>"><?php echo $row5['name'] ?></option>
@@ -109,6 +115,7 @@ if(isset($_POST[$id100])){
     ?>
 
 </table>
+<div id="pagination"></div>
 <?php } else if($_SESSION["role"] == '0') {
             header("location: ../index.php");
         } else if($_SESSION["role"] == '1') {
@@ -125,5 +132,25 @@ if(isset($_POST[$id100])){
             header("location: ../lakshya/view_l.php");
         }
         ?>
+<script>
+    var items = $("#table_id .tbrow");
+  console.log(items.length)
+  var numItems = items.length;
+    var perPage = 10;
+    items.slice(perPage).hide();
+
+    console.log($('#pagination'));
+    $('#pagination').pagination({
+        items: numItems,
+        itemsOnPage: perPage,
+        prevText: "",
+        nextText: "",
+        onPageClick: function (pageNumber) {
+            var showFrom = perPage * (pageNumber - 1);
+            var showTo = showFrom + perPage;
+            items.hide().slice(showFrom, showTo).show();
+            }
+        });
+</script>
 </body>
 </html>

@@ -15,11 +15,11 @@ if(!$_SESSION["username"]){
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
-    <title>Task Assign Page</title>
+    <title>Garud Page</title>
     <style>
         table{
             width: 80%;
-            margin: 20px 0;
+            margin: 20px auto;
         }
 
         table, th, td {
@@ -55,7 +55,7 @@ if(!$_SESSION["username"]){
         <th>Time </th>
     </tr>
 <?php
-$sql="SELECT * FROM `veena_team` WHERE status='1'";
+$sql="SELECT * FROM `garud_team` WHERE status='1'";
 $result=mysqli_query($connectDB,$sql);
 $i=0;
 while($row=mysqli_fetch_assoc($result)){

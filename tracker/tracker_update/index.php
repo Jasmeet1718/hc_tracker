@@ -15,16 +15,18 @@
 HC templates
 </nav>
 
-<div class="container">
+<div style="margin:0 20px ">
     <a href="add_new.php" class="btn btn-dark mb-3">Add New</a><a href="../admin.php" style="margin-left:10px;" class="btn btn-dark mb-3">Back</a>
     <table class="table table-hover text-center">
   <thead class="table-dark">
     <tr>
-      <th scope="col">Sno</th>
-      <th scope="col">Template</th>
-      <th scope="col">Time required(seconds)</th>
-      <th scope="col">Type</th>
-      <th scope="col">Action</th>
+      <th style="padding-left:150px">Template</th>
+      <th>Time required by Veena(seconds)</th>
+      <th>Time required for development(seconds)</th>
+      <th>Total Time required(seconds)</th>
+      <th style="padding-left:50px">Type</th>
+      <th>Development team</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -36,10 +38,12 @@ HC templates
             ?>
 
       <tr>
-       <td><?php echo $row['sno']?></td>
        <td><?php echo $row['template']?></td>
+       <td><?php echo $row['time_req_veena']?></td>
+       <td><?php echo $row['time_req_dev']?></td>
        <td><?php echo $row['time_req']?></td>
        <td><?php echo $row['type']?></td>
+       <td><?php echo $row['development_assign']?></td>
       <td>
         <a href="edit.php?sno=<?php  echo $row['sno']?>" class="link-dark"><i class="fa-solid fa-pen-to-square fs-5 me-3"></i></a>
         <a href="delete.php?sno=<?php  echo $row['sno']?>" class="link-dark"><i class="fa-solid fa-trash fs-5"></i></a>

@@ -80,7 +80,7 @@ if(!$_SESSION["username"]){
                 <?php echo  $row['member'];  ?>
                 </td>
                 <td>
-                <?php echo $row['assets'];  ?>
+                <a href="<?php echo $row['assets'];  ?>">Assets</a>
                 </td>
             </tr> 
             <?php

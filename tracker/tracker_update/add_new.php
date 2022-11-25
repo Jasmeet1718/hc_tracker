@@ -4,8 +4,11 @@ if(isset($_POST['submit'])){
     $template=$_POST['template'];
     $time_req=$_POST['time_req'];
     $type=$_POST['type'];
-
-    $sql="INSERT INTO `hc_templates`(`template`, `time_req`, `type`) VALUES ('$template','$time_req','$type')";
+    $time_req_veena=$_POST['time_req_veena'];
+    $time_req_dev=$_POST['time_req_dev'];
+    $development_assign=$_POST['development_assign'];
+    
+    $sql="INSERT INTO `hc_templates`(`template`,`time_req_veena`,`time_req_dev`, `time_req`, `type`,`development_assign`) VALUES ('$template','$time_req_veena','$time_req_dev','$time_req','$type','$development_assign')";
     $result=mysqli_query($connectDB,$sql);
 
     if($result){
@@ -54,13 +57,29 @@ HC templates - Add data
                     <input type="text" class="form-control" name="template">
                 </div>
                 <div class="col">
-                    <label class="form-label">Time Required (seconds)</label>
+                    <label class="form-label">Total Time Required (seconds)</label>
                     <input type="text" class="form-control" name="time_req" >
                 </div>
             </div>
-            <div class="mb-3">
+            <div class="row mb-3">
+                <div class="col">
+                    <label class="form-label">Time required by Veena team(seconds)</label>
+                    <input type="text" class="form-control" name="time_req_veena">
+                </div>
+                <div class="col">
+                    <label class="form-label">Time required by Development team(seconds)</label>
+                    <input type="text" class="form-control" name="time_req_dev" >
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
                 <label class="form-label">Type</label>
                 <input type="text" class="form-control" name="type" >
+                </div>
+                <div class="col">
+                    <label class="form-label">Development team(Garud/Nischay)</label>
+                    <input type="text" class="form-control" name="development_assign" >
+                </div>
             </div>
             <div>
                 <button type="submit" class="btn btn-success" name="submit">Save</button>

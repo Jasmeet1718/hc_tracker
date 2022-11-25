@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2022 at 03:10 PM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Nov 22, 2022 at 08:40 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -101,7 +101,6 @@ CREATE TABLE `hc_templates` (
   `sno` int(11) NOT NULL,
   `template` varchar(255) NOT NULL,
   `time_req_veena` int(100) NOT NULL,
-  `time_req_dev` int(11) NOT NULL,
   `time_req` int(100) NOT NULL,
   `type` varchar(255) NOT NULL,
   `development_assign` varchar(100) NOT NULL
@@ -111,39 +110,39 @@ CREATE TABLE `hc_templates` (
 -- Dumping data for table `hc_templates`
 --
 
-INSERT INTO `hc_templates` (`sno`, `template`, `time_req_veena`, `time_req_dev`, `time_req`, `type`, `development_assign`) VALUES
-(3, 'Swiper without feed', 5400, 4320, 10800, 'swiper', 'Garud'),
-(4, 'Vertical Slider', 5400, 4320, 10800, 'carousel', 'Garud'),
-(5, 'Rich Media', 5400, 4320, 10800, 'richMedia', 'Garud'),
-(6, 'Countdown', 5400, 4320, 10800, 'timer', 'Garud'),
-(7, 'Video Creatives', 5400, 4320, 10800, 'video', 'Garud'),
-(8, 'CanvasFlip', 5400, 4320, 10800, 'flip', 'Garud'),
-(9, 'Card flip without feed', 5400, 4320, 10800, 'flip', 'Garud'),
-(10, 'Static Slider', 5400, 4320, 10800, 'carousel', 'Garud'),
-(11, 'Vertical Auto Scroll', 5400, 4320, 10800, 'animation', 'Garud'),
-(12, 'Time of the day - dynamic time only', 5400, 4320, 10800, 'dynamic', 'Garud'),
-(13, 'Search based', 5400, 4860, 11700, 'search', 'Garud'),
-(14, 'Carousel flip', 5400, 4320, 10800, 'carousel', 'Garud'),
-(15, 'CTA flip', 5400, 4320, 10800, 'animation', 'Garud'),
-(16, 'sensex/Nifty', 5400, 4860, 11700, 'api', 'Nischay'),
-(17, 'Dynamic city', 5400, 4860, 11700, 'dynamic', 'Garud'),
-(18, 'Dropdown', 8100, 10800, 21600, 'interactive', 'Garud'),
-(19, 'Feed Based Creative', 8100, 10800, 21600, 'feed', 'Nischay'),
-(20, 'New innovations', 10800, 180000, 259200, 'other', 'Nischay'),
-(21, '360 Degree carousel', 10800, 10800, 23400, 'carousel', 'Nischay'),
-(22, 'Swipe With Feed', 8100, 10800, 21600, 'feed', 'Nischay'),
-(23, 'Moment Marketing (Sports API)', 16200, 93600, 172800, 'api', 'Nischay'),
-(24, 'Conditional Countdown Timer', 8100, 15300, 86400, 'timer', 'Nischay'),
-(25, 'Time of the day - dynamic content', 8100, 15300, 86400, 'dynamic', 'Nischay'),
-(26, 'Weather', 8100, 15300, 86400, 'api', 'Garud'),
-(27, 'Geo Location', 8100, 15300, 86400, 'geo', 'Garud'),
-(28, 'Crypto', 10800, 18900, 129600, 'api', 'Nischay'),
-(29, 'Mutual Funds', 10800, 18900, 129600, 'interactive', 'Nischay'),
-(30, 'All Feed Based', 8100, 10800, 21600, 'feed', 'Nischay'),
-(31, 'All Reco Based', 8100, 10800, 21600, 'redo', 'Nischay'),
-(32, 'Video Moment Marketing', 9000, 10800, 86400, 'video', 'Nischay'),
-(34, 'Moment Marketing + Geo Location', 16200, 18800, 259200, 'feed', 'Nischay'),
-(35, 'Moment Marketing + Dynamic Products', 16200, 93600, 259200, 'feed+dynamic', 'Nischay');
+INSERT INTO `hc_templates` (`sno`, `template`, `time_req_veena`, `time_req`, `type`, `development_assign`) VALUES
+(3, 'Swiper without feed', 5400, 10800, 'swiper', 'Garud'),
+(4, 'Vertical Slider', 5400, 10800, 'carousel', 'Garud'),
+(5, 'Rich Media', 5400, 10800, 'richMedia', 'Garud'),
+(6, 'Countdown', 5400, 10800, 'timer', 'Garud'),
+(7, 'Video Creatives', 5400, 10800, 'video', 'Garud'),
+(8, 'CanvasFlip', 5400, 10800, 'flip', 'Garud'),
+(9, 'Card flip without feed', 5400, 10800, 'flip', 'Garud'),
+(10, 'Static Slider', 5400, 10800, 'carousel', 'Garud'),
+(11, 'Vertical Auto Scroll', 5400, 10800, 'animation', 'Garud'),
+(12, 'Time of the day - dynamic time only', 5400, 10800, 'dynamic', 'Garud'),
+(13, 'Search based', 5400, 11700, 'search', 'Garud'),
+(14, 'Carousel flip', 5400, 10800, 'carousel', 'Garud'),
+(15, 'CTA flip', 5400, 10800, 'animation', 'Garud'),
+(16, 'sensex/Nifty', 5400, 11700, 'api', 'Nischay'),
+(17, 'Dynamic city', 5400, 11700, 'dynamic', 'Garud'),
+(18, 'Dropdown', 8100, 21600, 'interactive', 'Garud'),
+(19, 'Feed Based Creative', 8100, 21600, 'feed', 'Nischay'),
+(20, 'New innovations', 10800, 259200, 'other', 'Nischay'),
+(21, '360 Degree carousel', 10800, 23400, 'carousel', 'Nischay'),
+(22, 'Swipe With Feed', 8100, 21600, 'feed', 'Nischay'),
+(23, 'Moment Marketing (Sports API)', 16200, 172800, 'api', 'Nischay'),
+(24, 'Conditional Countdown Timer', 8100, 86400, 'timer', 'Nischay'),
+(25, 'Time of the day - dynamic content', 8100, 86400, 'dynamic', 'Nischay'),
+(26, 'Weather', 8100, 86400, 'api', 'Garud'),
+(27, 'Geo Location', 8100, 86400, 'geo', 'Garud'),
+(28, 'Crypto', 10800, 129600, 'api', 'Nischay'),
+(29, 'Mutual Funds', 10800, 129600, 'interactive', 'Nischay'),
+(30, 'All Feed Based', 8100, 21600, 'feed', 'Nischay'),
+(31, 'All Reco Based', 8100, 21600, 'redo', 'Nischay'),
+(32, 'Video Moment Marketing', 9000, 86400, 'video', 'Nischay'),
+(34, 'Moment Marketing + Geo Location', 16200, 259200, 'feed', 'Nischay'),
+(35, 'Moment Marketing + Dynamic Products', 16200, 259200, 'feed+dynamic', 'Nischay');
 
 -- --------------------------------------------------------
 

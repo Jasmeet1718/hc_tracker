@@ -63,6 +63,7 @@ error_reporting(E_ERROR | E_PARSE);
         <table class="tables">
             <tr>
                 <th>Task assigned</th>
+                <th>Assets Link</th>
                 <th>Countdown ETA</th>
                 <th>Time after ETA/deviation</th>
             </tr>
@@ -74,11 +75,18 @@ error_reporting(E_ERROR | E_PARSE);
             $task=$rowv['task'];
             $assign_time=$rowv['assign_time'];
             $submit_id=$rowv['id'];
-
+            $tt=explode("--",$task);
+        $task_name2=$tt[0];
+        $temp_tbd2=$tt[1];
+            $sql17="SELECT * FROM assign_task WHERE assign_to='Garud' AND task_name='$task_name2' AND temp_tbd='$temp_tbd2'";
+        $result17=mysqli_query($connectDB,$sql17);
+        $row17=mysqli_fetch_assoc($result17);
+        $assets=$row17['assets'];
         ?>
         
             <tr>
                 <td><?php echo $task ?></td>
+                <td><a target="_blank" href="<?php echo $assets ?>">Assets Link</a></td>
                 <td id="timer1-<?php echo $i ?>">00:00:00</td>
                 <td id="timer2-<?php echo $i ?>">00:00:00</td>
                 <td><a href="prev_ads_g.php?id=<?php echo $submit_id ?>"><button name="deviation">Submit</button></a></td>
@@ -109,8 +117,6 @@ error_reporting(E_ERROR | E_PARSE);
     
     ?>
         </table>
-
-        
     </div>
 
     <div class="box2">
@@ -118,6 +124,7 @@ error_reporting(E_ERROR | E_PARSE);
         <table class="tables">
             <tr>
                 <th>Task pending</th>
+                <th>Assets Link</th>
                 <th>Time given</th>
                 <th>click to start</th>
             </tr>
@@ -131,11 +138,18 @@ error_reporting(E_ERROR | E_PARSE);
             $timep=$rowvp['time'];
             $idp=$rowvp['id'];
             $sername=$_SESSION['name'];
+            $tt=explode("--",$taskp);
+        $task_name=$tt[0];
+        $temp_tbd=$tt[1];
+            $sql1718="SELECT * FROM assign_task WHERE assign_to='Garud' AND task_name='$task_name' AND temp_tbd='$temp_tbd'";
+        $result1718=mysqli_query($connectDB,$sql1718);
+        $row1718=mysqli_fetch_assoc($result1718);
+        $assets=$row1718['assets'];
         ?>
             <tr>
                 <td><?php echo $taskp ?></td>
+                <td><a target="_blank" href="<?php echo $assets ?>">Assets Link</a></td>
                 <td><?php echo gmdate("H:i:s", $timep)  ?></td>
-                
                 <td><button type="submit" name="start<?php echo $idp ?>">Start</button></td>
                 </form>
                 <?php 

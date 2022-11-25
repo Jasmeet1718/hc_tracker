@@ -14,8 +14,9 @@ date_default_timezone_set('Asia/Kolkata'); // india time setting
 $time = date('Y-m-d H:i:s');
 
 if(isset($_POST["submit"])){
-    $assets=$_POST['assets'];
-    $sql101="SELECT * FROM `veena_team` WHERE id = $id";
+    $prev=$_POST['prev'];
+    $adtag=$_POST['adtag'];
+    $sql101="SELECT * FROM `nischay_team` WHERE id = $id";
         $result101=mysqli_query($connectDB,$sql101);
         $row101=mysqli_fetch_assoc($result101);
         $task=$row101["task"];
@@ -29,21 +30,21 @@ if(isset($_POST["submit"])){
         if ($deviation<0){
             $deviation=0;
         }
-    $sql="UPDATE `assign_task` SET `deviation_v`='$deviation',`status_v`='2',`member`='$member',`assign_time`='$assign_time',`assets`='$assets' WHERE `task_name`='$task_name' AND `temp_tbd`='$temp_tbd' AND `assign_to`='Veena'";
+    $sql="UPDATE `assign_task` SET `deviation_v`='$deviation',`status_v`='2',`member`='$member',`assign_time`='$assign_time',`previews`='$prev',`adtags`='$adtag' WHERE `task_name`='$task_name' AND `temp_tbd`='$temp_tbd' AND `assign_to`='Nischay'";
     $result=mysqli_query($connectDB,$sql);
-    $sqld="DELETE FROM `veena_team` WHERE id=$id";
+    $sqld="DELETE FROM `nischay_team` WHERE id=$id";
     $resultd=mysqli_query($connectDB,$sqld);
     if($result){
-        header("location: view_v.php");
+        header("location: view_n.php");
     }
 
     $assign="SELECT * FROM `hc_templates` WHERE `template`='$temp_tbd'";
     $result_assign=mysqli_query($connectDB,$assign);
     $team=mysqli_fetch_assoc($result_assign);
     $development_assign=$team["development_assign"];
-    $time_req_dev=$team["time_req_dev"];
+    $time_req_veena=$team["time_req_veena"];
 
-    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`,`assets`) VALUES ('$task_name','$temp_tbd','$development_assign','$time_req_dev','0','$time','$assets')";
+    $sqlg="INSERT INTO `assign_task`(`task_name`, `temp_tbd`, `assign_to`, `time_v`, `status_v`,`assign_time`,`previews`,`adtags`) VALUES ('$task_name','$temp_tbd','Gati','900','0','$time','$prev','$adtag')";
     $resultg=mysqli_query($connectDB,$sqlg);
 }
 ?>
@@ -77,7 +78,7 @@ if(isset($_POST["submit"])){
 
 <body>
     <?php 
-        $sql="SELECT * FROM veena_team WHERE id='$id'";
+        $sql="SELECT * FROM nischay_team WHERE id='$id'";
         $result=mysqli_query($connectDB,$sql);
         $row=mysqli_fetch_assoc($result);
          ?>
@@ -86,10 +87,11 @@ if(isset($_POST["submit"])){
         <div class="text">You have completed <span style="color:red"><?php echo $row["task"] ?></span></div>
         <div class="text">please share the link for assets</div>
         
-        <input name="assets" type="text">
+        <input name="prev" type="text" placeholder="Preview link">
+        <input name="adtag" type="text" placeholder="Adtag link">
         <button name="submit" class="submit">submit</button>
         </form>
-        <button class="back"><a href="view_v.php">back</a></button>
+        <button class="back"><a href="view_g.php">back</a></button>
     </div>
 </body>
 
