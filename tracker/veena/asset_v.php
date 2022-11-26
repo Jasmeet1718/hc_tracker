@@ -40,7 +40,7 @@ $time = date('Y-m-d H:i:s');
         $sqld="DELETE FROM `veena_team` WHERE id=$id";
         $resultd=mysqli_query($connectDB,$sqld);
         if($result){
-            
+            header("location:view_v.php")
         }
     
         $assign="SELECT * FROM `hc_templates` WHERE `template`='$temp_tbd'";
@@ -93,7 +93,7 @@ $time = date('Y-m-d H:i:s');
         <form action="" method="post">
         <div class="text">You have completed <span style="color:red"><?php echo $row["task"] ?></span></div>
         <div class="text">please share the link for assets</div>
-        <input name="assets-0" type="text" placeholder="Please put asset link">
+        <input name="assets-0" type="text" placeholder="Assets>>url">
         <div id="asi"></div>
         <input type="hidden" id="test1" name="input1" >
         <br>
@@ -109,7 +109,7 @@ var j=1;
 function adint(){
     var assets = document.createElement('input');
            assets.type = 'text';
-           assets.placeholder = 'DCO:url';
+           assets.placeholder = 'DCO>>url';
             assets.name = "col"+j;
            assets.id = "col"+j;
     document.getElementById("asi").appendChild(assets);

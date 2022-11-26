@@ -77,10 +77,21 @@ if(!$_SESSION["username"]){
                 <?php echo gmdate("H:i:s", $row['deviation_v']);   ?>
                 </td>
                 <td>
-                <?php echo  $row['member'];  ?>
+                <?php echo  $row['member'];  ?> 
                 </td>
                 <td>
-                <a href="<?php echo $row['assets'];  ?>">Assets</a>
+                    <?php 
+                    $cassets=$row['assets'];
+                    $tt=explode(",",$cassets);
+                    for ($i=0;$i<count($tt);$i++){ 
+                        $link=explode(">>",$tt[$i]);
+                        $linkof=$link[0];
+                        $url=$link[1];
+                        ?>
+                        <a href="<?php echo $url ?>"><?php echo $linkof ?></a>
+                        <?php
+                    } ?>
+                
                 </td>
             </tr> 
             <?php
